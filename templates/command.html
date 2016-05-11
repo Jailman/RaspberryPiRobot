@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block body %}
+        <script>
+        function loadResult()
+        {
+          var command=document.getElementById("command").value;
+          var xmlhttp;
+          if (window.XMLHttpRequest)
+          {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+          }
+          else
+          {// code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+          }
+          xmlhttp.onreadystatechange=function()
+          {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+              document.getElementById("result").innerHTML=xmlhttp.responseText;
+            }
+          }
+          xmlhttp.open("GET","syscmd.php?command="+command,true);
+          xmlhttp.send();
+        }
+        </script>
+
+        <div style="margin-top:170px">
+
+        <!--<form action="command.php" method="post">-->
+        <form>
+        <h1 style="margin-left:-50%;position:relative">Command-line:</h1>
+        <input type="text" name="command" id="command" style="width:350px;margin-left:-10%">  
+        <br>
+        </form>
+        <button type="submit" onclick="loadResult()" style="width:200px;font-size:20px">Submit</button>
+        <!--<input type="text" name="result" style="height:300px;width:500px;margin-left:-30%">-->
+        <!--</form>-->
+        <br>
+        <hr width=50% align="center" style="height:0px;border:solid 3px red;margin-top:30px;margin-left:25%" />
+        <div id="result" style="margin-top:33px;font-size:25px;color:firebrick"><p>Here shows the result!</p></div>
+        </div>
+
+{% endblock %}

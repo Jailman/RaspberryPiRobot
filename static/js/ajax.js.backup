@@ -1,0 +1,75 @@
+   /*
+               
+              by y0umer
+               
+               [60min]    
+     
+      Function:createXmlHttpRequestobject
+      
+      returm Xmlobject;
+      
+    */
+     var XmlHttp;
+     function createXmlHttpRequestObject(){
+         
+        if(window.ActiveXobject){ // 判断是否是ie浏览器
+          try { // try开始 
+              xmlhttp = new ActiveXobject("Microsoft.XMLHTTP"); // 使用ActiveX对象创建ajax
+           }catch(e){
+               xmlHttp = false;
+            } // try end
+       }else{   //Chrome、FireFox等非ie内核
+           try{
+            xmlHttp = new XMLHttpRequest(); //视为非ie情况下
+           }catch(e){
+              xmlHttp = false; // 其他非主流浏览器
+          }
+        } // 判断结束,如果创建成功则返回一个DOM对象,如果创建不成功则返回一个false
+               
+            if(xmlHttp)
+            {
+                return xmlHttp;
+            }else{
+                alert("对象创建失败,请检查浏览器是否支持XmlHttpRequest!");
+            }
+        
+     } // 函数体
+   // createXmlHttpRequestObject();
+        /**********************************************/
+        
+        /*
+           ChenkGet 使用AJAX异步GET请求一个php文件
+        
+        */
+function ExecGet(url){
+             // 先创建一个对象实例
+          createXmlHttpRequestObject();
+           // 使用事件对象获取文本框ID的值
+          //var cont1 = document.getElementById("url_text").value;
+
+          //var url = "test.php?type="+cont1; //待发送URL
+          //var url = "test.php";
+          // xmlHttp.onreadystatechange=ajaxok; // 判断浏览器状态栏 (接收玩数据触发的事件)
+           xmlHttp.open("GET",url,false); // GET向服务器端发送数据
+           xmlHttp.send(null);
+        }
+           // 开始提交数据
+         // 回调函数 用于接收服务器返回过来的数据
+        
+        function ajaxok()
+        {
+           if(xmlHttp.readyState == 4 && xmlHttp.status==200)
+           {
+                // 表示数据已接收完成
+            //document.getElementById("hakecc").innerHTML = xmlHttp.responseText;
+          }
+    }
+
+
+function ExecGet(url) {
+  $(document).ready(function(){
+    $("button").click(function(){
+      $.get(url);
+    });
+  });
+}
