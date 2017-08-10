@@ -1,18 +1,16 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block body %}
 
-{% block body %}
+<div class="page-container" style="margin-top:170px">
+    <h1>RaspberryPi Login</h1>
+    <form action="{{ url_for('login') }}" method="post">
+        <input type="text" name="username" class="username" placeholder="Username">
+        <input type="password" name="password" class="password" placeholder="Password">
+        <button type="submit" style="font-size:20px">Sign me in</button>
+        <div class="error"><span>+</span></div>
+    </form>
 
-        <div class="page-container" style="margin-top:170px">
-            <h1>RaspberryPi Login</h1>
-            <form action="{{ url_for('login') }}" method="post">
-                <input type="text" name="username" class="username" placeholder="Username">
-                <input type="password" name="password" class="password" placeholder="Password">
-                <button type="submit" style="font-size:20px">Sign me in</button>
-                <div class="error"><span>+</span></div>
-            </form>
-
-        </div>
-        <br />
-        <div align="center" style="margin-top:20px"><span style="color:red;font-size:18px">Modified By </span><a href="http://541197941.qq.qzone.com" target="_blank" title="Jailman的空间" style="font-size:18px">Jailman</a></div>
+</div>
+<br />
+<div align="center" style="margin-top:20px"><span style="color:red;font-size:18px">Designed By </span><a href="http://541197941.qq.qzone.com" target="_blank" title="Jailman的空间" style="font-size:18px">Jailman</a></div>
 
 {% endblock %}
