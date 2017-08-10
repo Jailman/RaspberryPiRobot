@@ -1,56 +1,62 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
-<meta charset="utf-8">
-<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-<meta name="viewport" content="width=device-width" />
-<title>Raspberry Pi Robot</title>
-<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" />
-<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ url_for('static', filename='css/template_style.css') }}" rel="stylesheet" type="text/css">
-<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-<script>window.jQuery || document.write('<script src="{{ url_for('static', filename='js/jquery.min.js') }}">\x3C/script>')</script>
+    <meta charset="utf-8">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <title>Raspberry Pi Robot</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" />
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='css/template_style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='css/camerabutton.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='css/flexslider.css') }}" rel="stylesheet" type="text/css">
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <!-- <script>window.jQuery || document.write('<script src="{{ url_for('static', filename='js/jquery.min.js') }}">\x3C/script>')</script> -->
+
 
 </head>
+
 <body class="templatemo_juice_bg">
-	<div id="main_container">
-		<div class="container" id="home">
-			<div class="row col-wrap">			 
-				<div id="left_container" class="col col-md-3 col-sm-12">
-                	<div class="templatemo_logo">
-						<a  href="index.html" title="Home"><img src="{{ url_for('static', filename='images/templatemo_logo.png') }}" alt="Botany Theme"></a>
-					</div>
-					<nav id="main_nav">
+    <div id="main_container">
+        <div class="container" id="home">
+            <div class="row col-wrap">
+                <div id="left_container" class="col col-md-3 col-sm-12">
+                    <div class="templatemo_logo">
+                        <a href="index.html" title="Home"><img src="{{ url_for('static', filename='images/templatemo_logo.png') }}" alt="Botany Theme"></a>
+                    </div>
+                    <nav id="main_nav">
                         <ul class="nav">
-                          <li class="active" style="font-size:1.5em"><a href="{{ url_for('index') }}">Introduction</a></li>
-                          <li><a href="{{ url_for('Patrol_Monitor') }}" style="font-size:1.5em">Patrol Monitor</a></li>
-                          <li><a href="{{ url_for('Sensor_Graph') }}" style="font-size:1.5em">Sensor Graph</a></li>
-                          <li><a href="{{ url_for('Home_Automation') }}" style="font-size:1.5em">Home Automation</a></li>
-                          <li><a href="{{ url_for('Amaze_Me') }}" style="font-size:1.5em">Amaze Me</a></li>
+                            <li class="active"><a href="{{ url_for('index') }}" style="font-size:1.5em">Introduction</a></li>
+                            <li><a href="{{ url_for('Patrol_Monitor') }}" style="font-size:1.5em">Patrol Monitor</a></li>
+                            <li><a href="{{ url_for('Sensor_Graph') }}" style="font-size:1.5em">Sensor Graph</a></li>
+                            <li><a href="{{ url_for('Home_Automation') }}" style="font-size:1.5em">Home Automation</a></li>
+                            <li><a href="{{ url_for('Amaze_Me') }}" style="font-size:1.5em">Amaze Me</a></li>
                         </ul>
-					</nav> <!-- nav -->	
-				</div>
-				<div id="right_container" class="col col-md-9 col-sm-12">
-					<div class="row">
-                    	<div class="col col-md-12">
-                    		<h2>Raspberry Pi Robot</h2>
+                    </nav>
+                    <!-- nav -->
+                </div>
+                <div id="right_container" class="col col-md-9 col-sm-12">
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <h2>Raspberry Pi Robot</h2>
                             <div>
                                 <h3><strong>树莓派机器人</strong></h3>
                                 <div id="headblock" style="width:800px;height:270px">
-                                <div style="float:left">
-                                <h4><strong>主要功能</strong></h4>
-                                <ul style="font-size:20px">
-                                    <li><a href="{{ url_for('Patrol_Monitor') }}">远程视频巡视</a></li>
-                                    <li><a href="{{ url_for('Home_Automation') }}">人体红外感应</a></li>
-                                    <li><a href="{{ url_for('Sensor_Graph') }}">温湿度变化感应</a></li>
-                                    <li><a href="{{ url_for('Home_Automation') }}">智能家居控制中心</a></li>                                    
-                                    <li><a href="{{ url_for('Patrol_Monitor') }}">超声波传感自动避障</a></li>
-                                </ul>
-                                </div>
-                                <div style="width:280px;height:280px;float:right">
-                                <script type="text/javascript" src="//rf.revolvermaps.com/0/0/1.js?i=5rfnpj74jqd&amp;s=280&amp;m=8&amp;v=false&amp;r=false&amp;b=000000&amp;n=false&amp;c=ff0000" async="async"></script>
-                                </div>
+                                    <div style="float:left">
+                                        <h4><strong>主要功能</strong></h4>
+                                        <ul style="font-size:20px">
+                                            <li><a href="{{ url_for('Patrol_Monitor') }}">远程视频巡视</a></li>
+                                            <li><a href="{{ url_for('Home_Automation') }}">人体红外感应</a></li>
+                                            <li><a href="{{ url_for('Sensor_Graph') }}">温湿度变化感应</a></li>
+                                            <li><a href="{{ url_for('Home_Automation') }}">智能家居控制中心</a></li>
+                                            <li><a href="{{ url_for('Patrol_Monitor') }}">超声波传感自动避障</a></li>
+                                        </ul>
+                                    </div>
+                                    <div style="width:280px;height:280px;float:right">
+                                        <script type="text/javascript" src="//rf.revolvermaps.com/0/0/1.js?i=5rfnpj74jqd&amp;s=280&amp;m=8&amp;v=false&amp;r=false&amp;b=000000&amp;n=false&amp;c=ff0000" async="async"></script>
+                                    </div>
                                 </div>
                                 <h4><strong>简单介绍</strong></h4>
                                 <p style="font-size: 15px"><span style="color: red"><strong>硬件部分</strong></span>：树莓派机器人包含了众多传感器和组件，主要由四电机驱动亚克力透明小车底盘，树莓派2B+（包含免驱USBwifi和16G高速TF卡），树莓派专用夜视摄像头，舵机云台，L298N电机驱动模块，电机驱动供电模块，树莓派供电模块（小米10000mah充电宝，规格：5V2A），人体红外传感器，超声波距离传感器，温湿度传感器，315MHz无线继电器收发模块等组成。</p>
@@ -61,20 +67,21 @@
                                 <p style="font-size: 15px"><span style="color: red"><strong>软件部分</strong></span>：树莓派使用Raspbian操作系统，安装有apache2作为控制站点服务器，使用mjpg-stream生成和传输摄像头图像，目前图像在未压缩的情况下占用带宽较多，结合opencv可实现简单的图像识别。</p>
                                 <p style="font-size: 15px">树莓派控制站点部分使用html+css+js+python+shell编写而成，使用了jquery，jqueryAjax，bootstrap，highcharts等插件和工具，页面通过Ajax调用python CGI来获取数据和进行控制。</p>
                             </div>
-                            
-        				      </div>
-          </div>
-                    
-				</div>
-			</div>
-			<footer class="row credit">
-				<div class="col col-md-12">
-					<div id="templatemo_footer">
-						Copyright © 世界末日 <a href="#">Jail Studio</a> | Collected by <a href="http://541197941.qzone.qq.com" title="Jailman" target="_blank">Jailman</a> | More info <a href="http://541197941.qzone.qq.com" target="_blank" title="凌空の野望">凌空の野望</a>
-					</div>
-				</div>
-			</footer>
-		</div>		
-	</div>
-    </body>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <footer class="row credit">
+                <div class="col col-md-12">
+                    <div id="templatemo_footer">
+                        Copyright © 世界末日 <a href="#">Jail Studio</a> | Collected by <a href="http://541197941.qzone.qq.com" title="Jailman" target="_blank">Jailman</a> | More info <a href="http://541197941.qzone.qq.com" target="_blank" title="凌空の野望">凌空の野望</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+
 </html>

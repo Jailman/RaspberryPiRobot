@@ -1,55 +1,63 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
-<meta charset="utf-8">
-<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-<meta name="viewport" content="width=device-width" />
-<title>Amaze me</title>
-<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" />
-<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ url_for('static', filename='css/template_style.css') }}" rel="stylesheet" type="text/css">
-<script src="{{ url_for('static', filename='js/jquery1.3.1.min.js') }}"></script>
+    <meta charset="utf-8">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <title>Amaze me</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" />
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='css/template_style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='css/flexslider.css') }}" rel="stylesheet" type="text/css">
+    <script src="{{ url_for('static', filename='js/jquery1.3.1.min.js') }}"></script>
 
 </head>
+
 <body class="templatemo_garden_bg">
-	<div id="main_container">
-		<div class="container" id="contact">
-			<div class="row col-wrap">			 
-				<div id="left_container" class="col col-md-3 col-sm-12">
-					<div class="templatemo_logo">
-						<a  href="index.html"><img src="{{ url_for('static', filename='images/templatemo_logo.png') }}" alt="Botany Theme"></a>
-					</div>
-					<nav id="main_nav">
-			            <ul class="nav">
-			              <li class="active" style="font-size:1.5em"><a href="{{ url_for('index') }}">Introduction</a></li>
-			              <li><a href="{{ url_for('Patrol_Monitor') }}" style="font-size:1.5em">Patrol Monitor</a></li>
-			              <li><a href="{{ url_for('Sensor_Graph') }}" style="font-size:1.5em">Sensor Graph</a></li>
-			              <li><a href="{{ url_for('Home_Automation') }}" style="font-size:1.5em">Home Automation</a></li>
-			              <li><a href="{{ url_for('Amaze_Me') }}" style="font-size:1.5em">Amaze Me</a></li>
-			            </ul>
-					</nav> <!-- nav -->	
-				</div>			  	
-				<div id="right_container" class="col col-md-9 col-sm-12">
-					<div class="row"><div class="col col-md-12"><!-- <h3>Contact U<a href="#"  class="right_container_title"  target="_blank">s</a></h3> -->
-						<h2>Amaze me</h2>
-						<p style="visibility:hidden">
-							##########################################################################################################
-						</p>
-					</div></div>
-					                                             
-				</div>
-			</div>
-            
-			<footer class="row credit">
-				<div class="col col-md-12">
-					<div id="templatemo_footer">
-						Copyright © 世界末日 <a href="#">Jail Studio</a> | Collected by <a href="http://541197941.qzone.qq.com" title="Jailman" target="_blank">Jailman</a> | More info <a href="http://541197941.qzone.qq.com" target="_blank" title="凌空の野望">凌空の野望</a>
-					</div>
-				</div>
-			</footer>
-            
-		</div>		
-	</div>
+    <div id="main_container">
+        <div class="container" id="contact">
+            <div class="row col-wrap">
+                <div id="left_container" class="col col-md-3 col-sm-12">
+                    <div class="templatemo_logo">
+                        <a href="index.html"><img src="{{ url_for('static', filename='images/templatemo_logo.png') }}" alt="Botany Theme"></a>
+                    </div>
+                    <nav id="main_nav">
+                        <ul class="nav">
+                            <li><a href="{{ url_for('index') }}" style="font-size:1.5em">Introduction</a></li>
+                            <li><a href="{{ url_for('Patrol_Monitor') }}" style="font-size:1.5em">Patrol Monitor</a></li>
+                            <li><a href="{{ url_for('Sensor_Graph') }}" style="font-size:1.5em">Sensor Graph</a></li>
+                            <li><a href="{{ url_for('Home_Automation') }}" style="font-size:1.5em">Home Automation</a></li>
+                            <li class="active"><a href="{{ url_for('Amaze_Me') }}" style="font-size:1.5em">Amaze Me</a></li>
+                        </ul>
+                    </nav>
+                    <!-- nav -->
+                </div>
+                <div id="right_container" class="col col-md-9 col-sm-12">
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <!-- <h3>Contact U<a href="#"  class="right_container_title"  target="_blank">s</a></h3> -->
+                            <h2>Amaze me</h2>
+                            <p style="visibility:hidden">
+                                ##########################################################################################################
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <footer class="row credit">
+                <div class="col col-md-12">
+                    <div id="templatemo_footer">
+                        Copyright © 世界末日 <a href="#">Jail Studio</a> | Collected by <a href="http://541197941.qzone.qq.com" title="Jailman" target="_blank">Jailman</a> | More info <a href="http://541197941.qzone.qq.com" target="_blank" title="凌空の野望">凌空の野望</a>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </div>
 </body>
+
 </html>
