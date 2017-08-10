@@ -8,7 +8,7 @@
     Flask.
 
     :copyright: (c) TEOTW by Jailman.
-    :license: Nonsense.
+    :license: Apache 2.0.
 """
 
 '''##########Import modules##########'''
