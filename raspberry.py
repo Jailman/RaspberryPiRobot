@@ -49,7 +49,7 @@ def page_not_found(error):
     return render_template('404.html', title=title), 404
 
 @app.errorhandler(503)
-def page_not_found(error):
+def server_error(error):
     title = 'Error 503'
     return render_template('503.html', title=title), 503
 
@@ -66,7 +66,9 @@ def show_entries():
 #login page
 @app.route('/', methods=['GET', 'POST'])
 def login():
-    title = 'Login'
+    title = 'Login'          
+    if session.get('logged_in'):
+        return redirect(url_for('index'))
     # flash('You wanna damn log in, son?')
     if request.method == 'POST':
         if request.form['username'] != app.config['USERNAME']:
@@ -143,6 +145,7 @@ def Amaze_Me():
 
 if __name__ == '__main__':
     app.run(
+        debug = False,
         host='0.0.0.0',
         port=80
         )
