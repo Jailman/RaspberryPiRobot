@@ -38,10 +38,10 @@ app.permanent_session_lifetime = timedelta(hours=24)
 
 '''##########Login & error & command pages##########'''
 #error handler
-@app.errorhandler(401)
+@app.errorhandler(403)
 def forbidden(error):
-    title = 'Error 401'
-    return render_template('401.html', title=title), 401
+    title = 'Error 403'
+    return render_template('403.html', title=title), 403
 
 @app.errorhandler(404)
 def page_not_found(error):
@@ -59,7 +59,7 @@ def server_error(error):
 def show_entries():
     title = 'Command'
     if not session.get('logged_in'):
-        abort(401)
+        abort(403)
     return render_template('command.html', title=title)
 
 
@@ -72,9 +72,9 @@ def login():
     # flash('You wanna damn log in, son?')
     if request.method == 'POST':
         if request.form['username'] != app.config['USERNAME']:
-            abort(401)
+            abort(403)
         elif request.form['password'] != app.config['PASSWORD']:
-            abort(401)
+            abort(403)
         else:
             session['logged_in'] = True
             # flash('You were logged in, fucker!')
@@ -97,31 +97,31 @@ def login():
 def index():
     session.permanent = True
     if not session.get('logged_in'):
-        abort(401)
+        abort(403)
     return render_template('index.html')
 
 @app.route('/Patrol_Monitor')
 def Patrol_Monitor():
     if not session.get('logged_in'):
-        abort(401)
+        abort(403)
     return render_template('Patrol_Monitor.html')
 
 @app.route('/Sensor_Graph')
 def Sensor_Graph():
     if not session.get('logged_in'):
-        abort(401)
+        abort(403)
     return render_template('Sensor_Graph.html')
 
 @app.route('/Home_Automation')
 def Home_Automation():
     if not session.get('logged_in'):
-        abort(401)
+        abort(403)
     return render_template('Home_Automation.html')
 
 @app.route('/Amaze_Me')
 def Amaze_Me():
     if not session.get('logged_in'):
-        abort(401)
+        abort(403)
     return render_template('Amaze_Me.html')
 
 
