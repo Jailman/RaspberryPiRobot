@@ -51,40 +51,45 @@
                             </p>
                         </div>
                     </div>
-                    <div id="monitor">
-                        <p style="font-size: 2em;font-family: Times New Roman;color: yellowgreen">Camera Monitor</p>
-                        <span class="xform-p"><img id="streamimage" class="xform" src="http://172.22.237.8:8080/?action=stream" style="margin-left:35px;transform:rotate(180deg)" /></span>
-                    </div>
-                    <div id="controlbox">
-                        <div id="switchbtn">
-                            <p style="font-size: 2em;font-family: Times New Roman;color: yellowgreen">CameraControl</p>
-                            <!-- <img id="myimage" onclick="changeImage()" src="{{ url_for('static', filename='btimg/off.png') }}" width="180" height="180"> -->
-                            <div style="width:200px;height:200px;text-align:center;margin-left:10px;margin-top:15px">
-                                <a id="up" class="myButton" style="margin-bottom:5px">↑</a>
-                                <br>
-                                <a id="left" class="myButton">←</a>
-                                <a id="reset" class="myButton">Rst</a>
-                                <a id="right" class="myButton">→</a>
-                                <br>
-                                <a id="down" class="myButton" style="margin-top:5px">↓</a>
-                                <!-- <hr>
-							horizontal:
-							<p id="hrz">number</p><br>
-							vertical:
-							<p id="vtc">number</p><br> -->
+                    <div class="monitorbox">
+                        <div id="monitor">
+                            <p style="font-size: 2em;font-family: Times New Roman;color: yellowgreen">Camera Monitor</p>
+                            <span class="xform-p"><img id="streamimage" class="xform" src="http://172.22.237.8:8080/?action=stream" style="margin-left:35px;transform:rotate(180deg)" /></span>
+                        </div>
+                        <div id="controlbox">
+                            <div id="switchbtn">
+                                <p style="font-size: 2em;font-family: Times New Roman;color: yellowgreen">CameraControl</p>
+                                <!-- <img id="myimage" onclick="changeImage()" src="{{ url_for('static', filename='btimg/off.png') }}" width="180" height="180"> -->
+                                <div style="width:200px;height:200px;text-align:center;margin-left:10px;margin-top:15px">
+                                    <a id="up" class="myButton" style="margin-bottom:5px">↑</a>
+                                    <br>
+                                    <a id="left" class="myButton">←</a>
+                                    <a id="reset" class="myButton">Rst</a>
+                                    <a id="right" class="myButton">→</a>
+                                    <br>
+                                    <a id="down" class="myButton" style="margin-top:5px">↓</a>
+                                    <!-- <hr>
+								horizontal:
+								<p id="hrz">number</p><br>
+								vertical:
+								<p id="vtc">number</p><br> -->
+                                </div>
+                            </div>
+                            <div id="controlbtn">
+                                <p style="font-size: 2em;font-family: Times New Roman;color: yellowgreen">WheelControl</p>
+                                <div style="text-align:center">
+                                    <input type="button" class="btn" value="↑" style="margin-right:0px;margin-top:10px" onmousedown="ExecGet('/cgi-bin/forward.py')" onmouseup="ExecGet('/cgi-bin/stop.py')" />
+                                    <br>
+                                    <input type="button" class="btn" value="←" style="margin-right:0px;margin-top:5px" onmousedown="ExecGet('/cgi-bin/left.py')" onmouseup="ExecGet('/cgi-bin/stop.py')" />
+                                    <input type="button" class="btn" value="定" style="margin-right:0px;margin-top:5px" onclick="ExecGet('/cgi-bin/stop.py')" />
+                                    <input type="button" class="btn" value="→" style="margin-right:0px;margin-top:5px" onmousedown="ExecGet('/cgi-bin/right.py')" onmouseup="ExecGet('/cgi-bin/stop.py')" />
+                                    <br>
+                                    <input type="button" class="btn" value="↓" style="margin-right:0px;margin-top:5px" onmousedown="ExecGet('/cgi-bin/backward.py')" onmouseup="ExecGet('/cgi-bin/stop.py')" />
+                                </div>
                             </div>
                         </div>
-                        <div id="controlbtn">
-                            <p style="font-size: 2em;font-family: Times New Roman;color: yellowgreen">WheelControl</p>
-                            <div style="text-align:center">
-                                <input type="button" class="btn" value="↑" style="margin-right:0px;margin-top:10px" onmousedown="ExecGet('/cgi-bin/forward.py')" onmouseup="ExecGet('/cgi-bin/stop.py')" />
-                                <br>
-                                <input type="button" class="btn" value="←" style="margin-right:0px;margin-top:5px" onmousedown="ExecGet('/cgi-bin/left.py')" onmouseup="ExecGet('/cgi-bin/stop.py')" />
-                                <input type="button" class="btn" value="定" style="margin-right:0px;margin-top:5px" onclick="ExecGet('/cgi-bin/stop.py')" />
-                                <input type="button" class="btn" value="→" style="margin-right:0px;margin-top:5px" onmousedown="ExecGet('/cgi-bin/right.py')" onmouseup="ExecGet('/cgi-bin/stop.py')" />
-                                <br>
-                                <input type="button" class="btn" value="↓" style="margin-right:0px;margin-top:5px" onmousedown="ExecGet('/cgi-bin/backward.py')" onmouseup="ExecGet('/cgi-bin/stop.py')" />
-                            </div>
+                        <div class="panelbox">
+                            <p style="font-size: 2em;font-family: Times New Roman;color: yellowgreen">Panel</p>
                         </div>
                     </div>
                 </div>
