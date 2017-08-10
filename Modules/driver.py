@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
+"""
+RaspberryPiRobot driver
+"""
+
 import RPi.GPIO as GPIO
 import sys
 from time import sleep
