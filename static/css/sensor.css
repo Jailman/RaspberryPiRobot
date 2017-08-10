@@ -1,0 +1,15 @@
+#graphbox {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#temperature {
+    width: 800px;
+    height: 400px;
+}
+
+#humidity {
+    width: 800px;
+    height: 400px;
+    margin-top: 20px;
+}
