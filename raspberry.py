@@ -124,6 +124,18 @@ def Amaze_Me():
         abort(403)
     return render_template('Amaze_Me.html')
 
+'''##########Charts Demo##########'''
+@app.route('/get_temperature')
+def get_temperature():
+    return '[30.1, 30.1, 30.1, 30.1, 30.1, 30.1, 30.1, 30.1, 30.1, 30.1, 30.1, 30.1]'
+
+@app.route('/get_humidity')
+def get_humidity():
+    return '[32.3, 32.5, 32.1, 32.6, 30.8, 30.9, 31.1, 31.5, 32.1, 31.9, 31.7, 31.5]'
+
+@app.route('/get_time')
+def get_time():
+    return "['2:00', '2:05', '2:10', '2:15', '2:20', '2:25', '2:30', '2:35', '2:40', '2:45', '2:50', '2:55']"
 
 
 '''##########CGI drivers##########'''
