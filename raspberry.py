@@ -137,6 +137,25 @@ def get_humidity():
 def get_time():
     return "['2:00', '2:05', '2:10', '2:15', '2:20', '2:25', '2:30', '2:35', '2:40', '2:45', '2:50', '2:55']"
 
+'''##########Pi Power Control##########'''
+# from Modules.gpiostat import gpio_status
+
+@app.route('/power')
+def query():
+    # querystatus
+    return "on"
+    # GPIO_PIN = 12
+    # return gpio_status(GPIO_PIN)
+
+@app.route('/power/<control>')
+def switch(control):
+    if control == "on":
+        # switchon
+        return "on"
+    if control == "off":
+        # switchoff
+        return "off"
+
 
 '''##########CGI drivers##########'''
 
