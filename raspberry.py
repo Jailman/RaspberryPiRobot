@@ -32,7 +32,7 @@ app.config.update(dict(
     PASSWORD='111'
 ))
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
-app.permanent_session_lifetime = timedelta(hours=24)
+app.permanent_session_lifetime = timedelta(hours=5)
 
 
 
@@ -95,7 +95,7 @@ def logout():
 #raspberrypi pages
 @app.route('/index')
 def index():
-    session.permanent = True
+    # session.permanent = True
     if not session.get('logged_in'):
         abort(403)
     return render_template('index.html')
