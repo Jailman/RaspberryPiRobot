@@ -158,10 +158,10 @@ def switch(control):
 
 
 '''##########Robot drivers##########'''
-from Modules import driver as d
 
 @app.route('/driver/<control>')
 def robot_driver(control):
+    from Modules import driver as d
     d.init_driver()
     if control == "forward":
         d.forward()
