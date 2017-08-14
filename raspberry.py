@@ -48,10 +48,10 @@ def page_not_found(error):
     title = 'Error 404'
     return render_template('404.html', title=title), 404
 
-@app.errorhandler(503)
+@app.errorhandler(500)
 def server_error(error):
     title = 'Error 503'
-    return render_template('503.html', title=title), 503
+    return render_template('503.html', title=title), 500
 
 
 #command page
