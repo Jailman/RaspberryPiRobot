@@ -16,6 +16,7 @@
     <script src="{{ url_for('static', filename='js/jquery1.3.1.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/servo_directions.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/keyboardbind.js') }}"></script>
     <script src="{{ url_for('static', filename='js/button.js') }}"></script>
     <script src="{{ url_for('static', filename='js/ajax.js') }}"></script>
 
@@ -78,18 +79,25 @@
                             <div id="controlbtn">
                                 <p style="font-size: 2em;font-family: Times New Roman;color: yellowgreen">WheelControl</p>
                                 <div style="text-align:center">
-                                    <input type="button" class="btn" value="↑" style="margin-right:0px;margin-top:10px" onmousedown="ExecGet('/cgi-bin/forward.py')"
-                                        onmouseup="ExecGet('/cgi-bin/stop.py')" />
+                                    <!-- <input type="button" id="robot_up" class="btn" value="↑" style="margin-right:0px;margin-top:10px" onmousedown="ExecGet('/driver/forward')"
+                                        onmouseup="ExecGet('/driver/stop')" />
                                     <br>
-                                    <input type="button" class="btn" value="←" style="margin-right:0px;margin-top:5px" onmousedown="ExecGet('/cgi-bin/left.py')"
-                                        onmouseup="ExecGet('/cgi-bin/stop.py')" />
-                                    <input type="button" class="btn" value="定" style="margin-right:0px;margin-top:5px" onclick="ExecGet('/cgi-bin/stop.py')"
+                                    <input type="button" id="robot_left" class="btn" value="←" style="margin-right:0px;margin-top:5px" onmousedown="ExecGet('/driver/left')"
+                                        onmouseup="ExecGet('/driver/stop')" />
+                                    <input type="button" id="robot_stop" class="btn" value="定" style="margin-right:0px;margin-top:5px" onclick="ExecGet('/driver/stop')"
                                     />
-                                    <input type="button" class="btn" value="→" style="margin-right:0px;margin-top:5px" onmousedown="ExecGet('/cgi-bin/right.py')"
-                                        onmouseup="ExecGet('/cgi-bin/stop.py')" />
+                                    <input type="button" id="robot_right" class="btn" value="→" style="margin-right:0px;margin-top:5px" onmousedown="ExecGet('/driver/right')"
+                                        onmouseup="ExecGet('/driver/stop')" />
                                     <br>
-                                    <input type="button" class="btn" value="↓" style="margin-right:0px;margin-top:5px" onmousedown="ExecGet('/cgi-bin/backward.py')"
-                                        onmouseup="ExecGet('/cgi-bin/stop.py')" />
+                                    <input type="button" id="robot_down" class="btn" value="↓" style="margin-right:0px;margin-top:5px" onmousedown="ExecGet('/driver/backward')"
+                                        onmouseup="ExecGet('/driver/stop')" /> -->
+                                    <input type="button" id="robot_up" class="btn" value="↑" style="margin-right:0px;margin-top:10px" onclick="ExecGet('/driver/forward')" />
+                                    <br>
+                                    <input type="button" id="robot_left" class="btn" value="←" style="margin-right:0px;margin-top:5px" onclick="ExecGet('/driver/left')" />
+                                    <input type="button" id="robot_stop" class="btn" value="定" style="margin-right:0px;margin-top:5px" onclick="ExecGet('/driver/stop')" />
+                                    <input type="button" id="robot_right" class="btn" value="→" style="margin-right:0px;margin-top:5px" onclick="ExecGet('/driver/right')" />
+                                    <br>
+                                    <input type="button" id="robot_down" class="btn" value="↓" style="margin-right:0px;margin-top:5px" onclick="ExecGet('/driver/backward')" />
                                 </div>
                             </div>
                         </div>
