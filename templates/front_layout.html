@@ -13,8 +13,19 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/supersized.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/flashmessages.css') }}">
 
     </head>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
 
     <body>
 

@@ -83,11 +83,11 @@ def login():
 
 
 #logout page
-# @app.route('/logout')
-# def logout():
-#     session.pop('logged_in', None)
-#     flash('You were logged out, fucker?')
-#     return redirect(url_for('login'))
+@app.route('/logout')
+def logout():
+    session.pop('logged_in', None)
+    flash('Warning: You were logged out!')
+    return redirect(url_for('login'))
 
 
 
