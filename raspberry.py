@@ -157,7 +157,22 @@ def switch(control):
         return "off"
 
 
-'''##########CGI drivers##########'''
+'''##########Robot drivers##########'''
+from Modules import driver as d
+
+@app.route('/driver/<control>')
+def robot_driver(control):
+    d.init_driver()
+    if control == "forward":
+        d.forward()
+    if control == "backward":
+        d.backward()
+    if control == "stop":
+        d.stop()
+    if control == "left":
+        d.left()
+    if control == "right":
+        d.right()
 
 '''##########Servo drivers##########'''
 # @app.route('/servo/<float:post_value>')
@@ -165,10 +180,7 @@ def switch(control):
 #     servo.somefunc(post_value)
 
 
-'''##########Wheel drivers##########'''
-# @app.route('/wheel/<direction>')
-# def wheel_ctrl(direction):
-#     driver.somefunc(direction)
+
 
 
 
