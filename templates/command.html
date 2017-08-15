@@ -1,39 +1,27 @@
 {% extends "front_layout.html" %} {% block body %}
-<script>
-    function loadResult() {
-        var command = document.getElementById("command").value;
-        var xmlhttp;
-        if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else { // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("result").innerHTML = xmlhttp.responseText;
-            }
-        }
-        xmlhttp.open("GET", "syscmd.php?command=" + command, true);
-        xmlhttp.send();
-    }
-</script>
 
-<div style="margin-top:170px">
-
-    <!--<form action="command.php" method="post">-->
-    <form>
-        <h1 style="margin-left:-50%;position:relative">Command-line:</h1>
-        <input type="text" name="command" id="command" style="width:350px;margin-left:-10%">
+<div style="margin-top:170px; text-align:center">
+    <h1>Command-line:</h1>
+    <form action="{{ url_for('command') }}" method="post">    
+        <input type="text" name="command" id="command" style="width:300px; margin:0 auto">
         <br>
+        <button type="submit" style="width:200px;font-size:20px; margin-bottom:30px">Submit</button>
     </form>
-    <button type="submit" onclick="loadResult()" style="width:200px;font-size:20px">Submit</button>
-    <!--<input type="text" name="result" style="height:300px;width:500px;margin-left:-30%">-->
-    <!--</form>-->
     <br>
-    <hr width=50% align="center" style="height:0px;border:solid 3px red;margin-top:30px;margin-left:25%" />
-    <div id="result" style="margin-top:33px;font-size:25px;color:firebrick">
-        <p>Here shows the result!</p>
+    <hr style="width:1000px; border:solid 3px red;margin:0 auto" />
+    <p style="margin-top:10px;margin-bottom:10px;font-size:30px;color:red;font-weight:bold">RESULT</p>
+    <div id="result" style="width:1000px;margin:0 auto;font-size:20px;color:yellow;text-align:left">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashresult>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
     </div>
+
 </div>
 
 {% endblock %}

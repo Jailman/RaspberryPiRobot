@@ -11,7 +11,14 @@
     :license: Apache 2.0.
 """
 
+#global unicode declearation
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 '''##########Import modules##########'''
+import platform
+osdist = platform.platform().split('-')[0]
 # from sqlite3 import dbapi2 as sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, Response, \
      render_template, flash
@@ -71,11 +78,31 @@ def server_error(error):
     return render_template('503.html', title=title), 500
 
 #command page
-@app.route('/command')
+@app.route('/command', methods=['GET', 'POST'])
 @login_required
 def command():
+    from os import popen as p
     title = 'Command'
-    return render_template('command.html', title=title)
+    if request.method == 'POST':
+        cmd = request.form['command']
+        if cmd.strip() != "":
+            try:
+                if osdist == 'Windows':
+                    #windows cmd result needs to be transformed
+                    result = p(cmd).read().decode('gbk').encode('utf8')
+                else:
+                    result = p(cmd).read()
+                for line in result.split('\n'):
+                    flash(line)
+                return render_template('command.html', title=title)
+            except:
+                flash("Execution Error!")
+                return render_template('command.html', title=title)
+        flash("Input error!")
+        return render_template('command.html', title=title)
+    else:
+        flash("Here shows the result!")
+        return render_template('command.html', title=title)
 
 
 #login page

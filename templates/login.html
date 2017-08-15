@@ -2,6 +2,16 @@
 
 {% block body %}
 
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
 <div class="page-container" style="margin-top:170px">
     <h1>RaspberryPi Login</h1>
     <form action="{{ url_for('login') }}" method="post">
