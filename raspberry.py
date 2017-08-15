@@ -56,7 +56,7 @@ def server_error(error):
 
 #command page
 @app.route('/command')
-def show_entries():
+def command():
     title = 'Command'
     if not session.get('logged_in'):
         abort(403)

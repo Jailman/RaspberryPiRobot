@@ -73,7 +73,7 @@ def server_error(error):
 #command page
 @app.route('/command')
 @login_required
-def show_entries():
+def command():
     title = 'Command'
     return render_template('command.html', title=title)
 
