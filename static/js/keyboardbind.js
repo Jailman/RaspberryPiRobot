@@ -10,6 +10,7 @@
 // keycode 38 = Up
 // keycode 39 = Right
 // keycode 40 = Down
+//keycode 82 = r R
 
 document.onkeydown = function (event) {
     var e = event || window.event;
@@ -27,19 +28,6 @@ document.onkeydown = function (event) {
             break;
         case 68:
             $("#robot_right").click();
-            break;
-        //servo
-        case 38:
-            $("#up").click();
-            break;
-        case 40:
-            $("#down").click();
-            break;
-        case 37:
-            $("#left").click();
-            break;
-        case 39:
-            $("#right").click();
             break;
         default:
             break;
@@ -65,15 +53,18 @@ document.onkeyup = function (event) {
             break;
         //servo
         case 38:
-            $("#reset").click();
+            $("#up").click();
             break;
         case 40:
-            $("#reset").click();
+            $("#down").click();
             break;
         case 37:
-            $("#reset").click();
+            $("#left").click();
             break;
         case 39:
+            $("#right").click();
+            break;
+        case 82:
             $("#reset").click();
             break;
         default:
