@@ -50,8 +50,8 @@ class User(UserMixin):
     def __repr__(self):
         return "%d/%s/%s" % (self.id, self.name, self.password)
 #create uers
-users = [User(id) for id in range(1, 21)]
-# users = [User(1)]
+# users = [User(id) for id in range(1, 21)]
+users = [User(1)]
 
 '''##########Login & error & command pages##########'''
 #error handler
