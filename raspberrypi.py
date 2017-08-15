@@ -94,8 +94,8 @@ def login():
             id = username.split('admin')[1]
             user = User(id)
             login_user(user)
-            return redirect(request.args.get("next"))
-            # return redirect(url_for('index'))
+            # return redirect(request.args.get("next"))
+            return redirect(url_for('index'))
     return render_template('login.html', title=title)
 
 #logout page
