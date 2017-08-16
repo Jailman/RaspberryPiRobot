@@ -12,6 +12,9 @@
     <link href="{{ url_for('static', filename='css/template_style.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ url_for('static', filename='css/flexslider.css') }}" rel="stylesheet" type="text/css">
     <script src="{{ url_for('static', filename='js/jquery1.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/jquery.flexslider.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/modernizr.js') }}"></script>
 
 </head>
 
@@ -47,7 +50,14 @@
                             <h2>Amaze me</h2>
                              <p style="visibility:hidden">
                                 ##########################################################################################################
-                            </p> 
+                            </p>
+                            <div class="flexslider">
+                                <ul class="slides">
+                                  <li><img src="{{ url_for('static', filename='images/slide_1.jpg') }}" alt="slide 1" /></li>
+                                  <li><img src="{{ url_for('static', filename='images/slide_2.jpg') }}" alt="slide 1" /></li>
+                                  <li><img src="{{ url_for('static', filename='images/slide_3.jpg') }}" alt="slide 1" /></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -63,6 +73,21 @@
             </footer>
         </div>
     </div>
+    
+    <script type="text/javascript">
+        $(function(){
+            SyntaxHighlighter.all();
+        });
+        $(window).load(function(){
+            $('.flexslider').flexslider({
+                animation: "slide",
+                start: function(slider){
+                    $('body').removeClass('loading');
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>
