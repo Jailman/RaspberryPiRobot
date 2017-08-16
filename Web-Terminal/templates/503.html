@@ -1,0 +1,22 @@
+{% extends "front_layout.html" %} {% block body %}
+
+<script> 
+var t=10; //设定跳转的时间 
+setInterval("refer()",1000); //启动1秒定时 
+function refer(){ 
+if(t==0){ 
+location="/"; //#设定跳转的链接地址 
+} 
+document.getElementById('show').innerHTML = "" + t + " seconds left before relogin."; // 显示倒计时 
+t--; // 计数器递减 
+} 
+</script> 
+<span id="show"></span>
+
+<div>
+    <h1 style="font-size:70px;color:red;margin-top:198px;margin-bottom:30px;font-family: 'PT Sans', Helvetica, Arial, sans-serif;">Shit happened!</h1>
+    <img src="{{ url_for('static', filename='img/fuckyou.png') }}">
+    <h2 style="font-size:50px;color:yellow;margin-top:30px;font-family: 'PT Sans', Helvetica, Arial, sans-serif;">Fix this shit, bro!</h2>
+</div>
+
+{% endblock %}
