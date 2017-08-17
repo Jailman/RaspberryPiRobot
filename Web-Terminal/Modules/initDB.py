@@ -20,9 +20,9 @@ metadata = MetaData(engine)
 #create tables, init database
 pilot = Table('pilot', metadata,
     Column('id', Integer, primary_key = True),
-    Column('name', String(255)),
+    Column('name', String(255), unique = True),
     Column('fullname', String(255)),
-    Column('email', String(255)),
+    Column('email', String(255), unique = True),
     Column('password', String(255))
 )
 
