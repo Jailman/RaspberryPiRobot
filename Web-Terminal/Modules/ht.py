@@ -74,8 +74,9 @@ def ht_insert_data(channel):
     if check == tmp:
         print "temperature :", temperature, "*C, humidity :", humidity, "%"
         datetime = dt.now()
-        data = Air(datetime, temperature, humidity)
+        data = Air(datetime, temperature, humidity, False)
         try:
+            db.session.rollback()
             db.session.add(data)
             db.session.commit()
         except:
