@@ -19,13 +19,14 @@ sys.setdefaultencoding('utf8')
 '''##########Import modules##########'''
 import platform
 osdist = platform.platform().split('-')[0]
-# from sqlite3 import dbapi2 as sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, Response, \
      render_template, flash
 from flask_login import LoginManager, login_required, login_user, UserMixin, \
      logout_user 
 from time import sleep
 from datetime import timedelta
+from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
 #import dirvers
 # from Modules import driver
 # from Modules import servo
@@ -37,28 +38,73 @@ app = Flask(__name__)
 # Load default config and override config from an environment variable
 app.config.update(
     SECRET_KEY='SeriouslydevelopedbyJailman',
-    USERNAME='admin1',
-    PASSWORD='111'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///DB/raspberrypi.db'
 )
-app.config.from_envvar('FLASKR_SETTINGS', silent=True)
+
 app.permanent_session_lifetime = timedelta(hours=5)
 
+#SQLAlchemy
+db = SQLAlchemy(app)
 # flask-login
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = "login"
+login_manager = LoginManager(app)
+login_manager.session_protection = 'strong'
+login_manager.login_view = 'login'
 
-'''##########Simple user model##########'''
-class User(UserMixin):
-    def __init__(self, id):
-        self.id = id
-        self.name = "admin" + str(id)
-        self.password = "111"
+'''##########DB model##########'''
+class User(db.Model, UserMixin):
+    __tablename__ = 'pilot'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(255), unique=True)
+    fullname = db.Column(db.String(255))
+    email = db.Column(db.String(255), unique=True)
+    password_hash = db.Column(db.String(255))
+
+
+    def __init__(self, name, fullname, email, password_hash):
+        self.name = name
+        self.fullname = fullname
+        self.email = email
+        self.password_hash = password_hash
+
+
+    def verify_password(self, password):
+        return check_password_hash(generate_password_hash(self.password_hash), password)
+
+
     def __repr__(self):
-        return "%d/%s/%s" % (self.id, self.name, self.password)
-#create uers
-# users = [User(id) for id in range(1, 21)]
-users = [User(1)]
+       return "%s/%s/%s" % (self.name, self.fullname, self.email)
+
+# callback to reload the user object
+@login_manager.user_loader
+def load_user(userid):
+   return User.query.get(int(userid))
+
+class Air(db.Model):
+    __tablename__ = 'air'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    date = db.Column(db.DateTime, nullable=True)
+    temperature = db.Column(db.Float)
+    humidity = db.Column(db.Float)
+    infaredetector = db.Column(db.Boolean)
+
+
+class Joystick(db.Model):
+    __tablename__ = 'joystick'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    gpio = db.Column(db.Integer)
+    function = db.Column(db.String(255))
+    device = db.Column(db.String(255))
+
+
+'''##########Init DB & Create users##########'''
+db.create_all()
+try:
+    admin = User('root', 'root', 'jailman@sina.com', 'raspberrypi')
+    db.session.add(admin)
+    db.session.commit()
+except:
+    pass
+
 
 '''##########Login & error & command pages##########'''
 #error handler
@@ -112,17 +158,14 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        if username != app.config['USERNAME']:
-            abort(403)
-        elif password != app.config['PASSWORD']:
-            abort(403)
-        else:
-            session['logged_in'] = True
-            id = username.split('admin')[1]
-            user = User(id)
+        user = User.query.filter_by(name=username).first()
+        if user is not None and user.verify_password(password):
             login_user(user)
+            session['logged_in'] = True
             # return redirect(request.args.get("next"))
             return redirect(url_for('index'))
+        else:
+            abort(403)
     return render_template('login.html', title=title)
 
 #logout page
@@ -134,12 +177,6 @@ def logout():
     flash('Warning: You were logged out!')
     return redirect(url_for('login'))
 
-# callback to reload the user object        
-@login_manager.user_loader
-def load_user(userid):
-    return User(userid)
-
-
 
 '''##########Pi Pages##########'''
 #raspberrypi pages
@@ -147,7 +184,6 @@ def load_user(userid):
 @app.route('/index')
 @login_required
 def index():
-    # return Response("Hello World!")
     return render_template('index.html')
 
 @app.route('/Patrol_Monitor')
