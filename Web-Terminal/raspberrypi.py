@@ -87,12 +87,25 @@ class Air(db.Model):
     infaredetector = db.Column(db.Boolean)
 
 
+    def __init__(self, date, temperature, humidity, infaredetector):
+        self.date = date
+        self.temperature = temperature
+        self.humidity = humidity
+        self.infaredetector = infaredetector
+
+
 class Joystick(db.Model):
     __tablename__ = 'joystick'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     gpio = db.Column(db.Integer)
     function = db.Column(db.String(255))
     device = db.Column(db.String(255))
+
+
+    def __init__(self, gpio, function, device):
+        self.gpio = gpio
+        self.function = function
+        self.device = device
 
 
 '''##########Init DB & Create users##########'''
