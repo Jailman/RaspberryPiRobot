@@ -19,11 +19,10 @@ sys.setdefaultencoding('utf8')
 '''##########Import modules##########'''
 import platform
 osdist = platform.platform().split('-')[0]
-from flask import Flask, request, session, g, redirect, url_for, abort, Response, \
+from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
 from flask_login import LoginManager, login_required, login_user, UserMixin, \
-     logout_user 
-from time import sleep
+     logout_user
 from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
