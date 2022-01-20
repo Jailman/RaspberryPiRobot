@@ -11,6 +11,16 @@ import (
 	"github.com/Jailman/protocol"
 )
 
+// 控制机器人方向
+func HandleRobotWheels(direction string) {
+
+}
+
+// 开启视频流并监听
+func HandleVideoStream(conn net.Conn) {
+	
+}
+
 // Socket通信函数
 // 发送消息
 func handleConnection_SendMission(conn net.Conn, mission string) {
