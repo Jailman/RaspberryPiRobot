@@ -21,6 +21,32 @@ func HandleVideoStream(conn net.Conn) {
 	
 }
 
+// 温度传感器
+func HandleTemperature() float64 {
+	
+}
+
+// 湿度传感器
+func HandleHumidity() float64 {
+
+}
+
+// 语音交互
+func handleVoiceInteraction() {
+
+}
+
+// 自动避障
+func AvoidObstacle() {
+
+}
+
+// 自动巡线充电
+func AutoCharge() {
+
+}
+
+
 // Socket通信函数
 // 发送消息
 func handleConnection_SendMission(conn net.Conn, mission string) {
