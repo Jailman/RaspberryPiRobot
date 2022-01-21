@@ -9,6 +9,13 @@ import (
 	"io"
 	"os/signal"
 	"github.com/Jailman/protocol"
+
+	"./stream"
+	"./websocket_handler"
+	// "strconv"
+	// "net/http"
+	// "github.com/gorilla/handlers"
+	"github.com/gorilla/mux"
 )
 
 // 控制机器人方向
@@ -16,19 +23,52 @@ func HandleRobotWheels(direction string) {
 
 }
 
+// rsapivid相关参数
+const (
+	staticDir         = "static"
+	staticURL         = "/static"
+	videoWebsocketURL = "/stream"
+	port              = 8080
+	width             = 960
+	height            = 540
+	fps               = 30
+)
+
 // 开启视频流并监听
 func HandleVideoStream(conn net.Conn) {
-	
+
+	options := stream.CameraOptions{
+		Width:          width,
+		Height:         height,
+		Fps:            fps,
+		HorizontalFlip: true,
+		VerticalFlip:   true,
+		Rotation:       0,
+	}
+
+	router := mux.NewRouter()
+
+	// Websocket
+	connectionNumber := make(chan int, 2)
+	wsh := websocket_handler.NewWebSocketHandler(connectionNumber)
+	router.HandleFunc(videoWebsocketURL, wsh.Handler)
+	go stream.Video(options, wsh, connectionNumber)
+
+	// Static
+	// fs := http.FileServer(http.Dir(staticDir))
+	// router.PathPrefix(staticURL).Handler(handlers.CompressHandler(http.StripPrefix(staticURL, fs)))
+	// log.Fatal(http.ListenAndServe(":"+strconv.Itoa(port), router))
+
 }
 
 // 温度传感器
 func HandleTemperature() float64 {
-	
+	return 0
 }
 
 // 湿度传感器
 func HandleHumidity() float64 {
-
+	return 0
 }
 
 // 语音交互

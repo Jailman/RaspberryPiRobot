@@ -7,6 +7,12 @@ It is still under developing<br>
 
 ### RaspberryPi Robot is back! ###
 
+#### RobotServer build ####
+cd RaspberryPiRobot/RobotServer  
+go env  
+export GO111MODULE=off  
+go build server.go  
+
 # Tools #
 * [Fritzing](http://fritzing.org)
 * [xmind](http://www.xmind.net/)
